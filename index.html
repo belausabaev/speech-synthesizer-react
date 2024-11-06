@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+    <title>Speech Synthesizer</title>
+    <script src="js/tweakpane.min.js"></script>
+    <script src="js/Tone.js"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js">
+    </script>
+  
+</head>
+
+<body>
+    
+    <table width="50%" align="left">
+        <tr>
+          <td></td>
+          <td>
+            <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started" target="_blank">Azure
+              Cognitive Services Speech Documentation</a>
+          </td>
+        </tr>
+        <tr>
+          <td align="right">Your Speech Resource Key</td>
+          <td>
+  
+            <input id="resourceKey" type="text" size="40" placeholder="Your resource key (32 characters)" value=""
+              onblur="updateSrc()">
+  
+        </tr>
+        <tr>
+          <td align="right">Your Speech Resource region</td>
+          <td>
+            <input id="resourceRegion" type="text" size="40" placeholder="Your resource region" value="germanywestcentral"
+              onblur="updateSrc()">
+  
+          </td>
+        </tr>
+        <tr>
+          <td align="right" valign="top">Input Text (max 500 char)</td>
+          <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:50px" maxlength="500"
+              onblur="updateSrc()">all good men must come to the aid</textarea></td>
+        </tr>
+        <tr>
+          <td align="right">
+            Stream directly from Azure Cognitive Services
+          </td>
+          <td>
+            <div>
+              <button id="clientAudioAzure" onclick="getSpeechFromAzure()">Get directly from Azure</button>
+            </div>
+          </td>
+        </tr>
+  
+        <tr>
+          <td align="right">
+            Stream audio from file on server</td>
+          <td>
+            <audio id="serverAudioFile" controls preload="none" onerror="DisplayError()">
+            </audio>
+          </td>
+        </tr>
+  
+        <tr>
+          <td align="right">Stream audio from buffer on server</td>
+          <td>
+            <audio id="serverAudioStream" controls preload="none" onerror="DisplayError()">
+            </audio>
+          </td>
+        </tr>
+      </table>
+  
+    <div id="canvas">
+        <script src="canvas.js"></script>
+    </div>
+    <script src="src/gui.js"></script>
+
+
+
+ 
+</body>
+
+</html>
