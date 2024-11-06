@@ -7,7 +7,7 @@ const PARAMS = {
 
 
 const pane = new Tweakpane({
-    title: 'Speech Synthesizer',
+    title: 'Tone gui',
     expanded: true,
 });
 
