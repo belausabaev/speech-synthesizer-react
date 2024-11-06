@@ -104,6 +104,7 @@ function getSpeechFromAzure() {
     console.log(phrase);
     // authorization for Speech service
     var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(resourceKey, resourceRegion);
+    speechConfig.speechSynthesisVoiceName = "de-DE-ElkeNeural"; 
 
     // new Speech object
     synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
@@ -160,6 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
         SpeechSDK = window.SpeechSDK;
         clientAudioAzure.disabled = false;
 
-        //     document.getElementById('content').style.display = 'block';
+             document.getElementById('content').style.display = 'block';
     }
 });
