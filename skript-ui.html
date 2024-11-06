@@ -1,0 +1,103 @@
+<style>
+    #maxi {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: medium;
+    }
+
+    #heading {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: medium;
+    }
+
+    #maxi td,
+    #maxi th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #maxi tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #maxi tr:hover {
+        background-color: #ddd;
+    }
+
+    #maxi th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<p>Your Speech Resource Key</p>
+        <p>
+            <input id="resourceKey" type="text" size="40" placeholder="Your resource key (32 characters)" value=""
+                onblur="updateSrc2()">
+        </p>
+        <br>
+
+<table id="maxi" align="left" style="overflow-y:scroll">
+    <tr id="heading">
+        <th>
+            <div>Num</div>
+        <th>
+            <div>Spracheingabe</div>
+        <th>
+            <div>Antwort Maxi</div>
+    <tr>
+        <td align="left">1</td>
+        <td align="left">wo ist Zwetschgenmännle?</td>
+        <td id="text" onclick="setInputTxt(1),getSpeechFromAzure()" align="left">Tabellenzelle B2</td>
+    </tr>
+    <tr>
+        <td align="left">2</td>
+        <td align="left">wo ist Reiterle?</td>
+        <td id="text" onclick="setInputTxt(2),getSpeechFromAzure()" align="left">Tabellenzelle B3</td>
+    </tr>
+    <tr>
+        <td align="left">3</td>
+        <td align="left">wo ist Elise Pflaume-Zimt?</td>
+        <td id="text" onclick="setInputTxt(3),getSpeechFromAzure()" align="left">Tabellenzelle B4</td>
+    </tr>
+    <tr>
+        <td align="left">4</td>
+        <td align="left">wo ist Südliche Elise?</td>
+        <td id="text" onclick="setInputTxt(4), getSpeechFromAzure()" align="left">Tabellenzelle B5</td>
+    </tr>
+    <tr>
+        <td align="left">5</td>
+        <td align="left">wo ist Caschew Schoko-Traum?</td>
+        <td id="text" onclick="setInputTxt(5),getSpeechFromAzure()" align="left">Tabellenzelle B6</td>
+    </tr>
+    <tr>
+        <td align="left">6</td>
+        <td align="left">wo ist Caschew Bio-Christstollen?</td>
+        <td id="text" onclick="setInputTxt(6),getSpeechFromAzure()" align="left">Tabellenzelle B7</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td align="left">Wo ist die Zelle für die Einnahmen für Zwetschgenmännle?</td>
+        <td id="text" onclick="setInputTxt(7),getSpeechFromAzure()" align="left">Tabellenzelle E2</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td align="left">Wieviel betragen die Einnahmen für Bio-Christstollen?</td>
+        <td id="text" onclick="setInputTxt(8),getSpeechFromAzure()" id="8" align="left">Wie berechne ich die Einnahmen für Bio-Christstollen?</td>
+    </tr>
+
+
+
+     
+
+</table>
+
+
+<script src="js/Tone.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="skript_maxi.js"></script>
+<script src="canvas.js"></script>

@@ -5,6 +5,39 @@
 
 
     <title>Speech Synthesizer</title>
+    <style>
+        #maxi {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: medium;
+        }
+
+        #heading {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: medium;
+        }
+
+        #maxi td,
+        #maxi th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #maxi tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #maxi tr:hover {
+            background-color: #ddd;
+        }
+
+        #maxi th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
     <script src="js/tweakpane.min.js"></script>
     <script src="js/Tone.js"></script>
     <script
@@ -12,6 +45,10 @@
         </script>
 
 </head>
+<frameset cols="40%, 60%">
+    <frame src="tts-ui.html"></frame>
+    <frame src="skript-ui.html"></frame>
+</frameset>
 
 <body>
 
@@ -43,7 +80,7 @@
         <tr>
             <td align="right" valign="top">Input Text (max 500 char)</td>
             <td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:50px" maxlength="500"
-                    onblur="updateSrc()">all good men must come to the aid</textarea></td>
+                    onblur="updateSrc()">Wie berechne ich die Einnahmen für Bio-Christstollen?</textarea></td>
         </tr>
         <tr>
             <td align="right">
@@ -73,6 +110,198 @@
           </td>
         </tr>
         -->
+    </table>
+
+    <table id="maxi" align="right" style="overflow-y:scroll">
+
+        <tr id="heading">
+            <th>
+                <div>Num</div>
+            <th>
+                <div>Spracheingabe</div>
+            <th>
+                <div>Antwort Maxi</div>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="left">Tabellenzelle … </td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td align="left">Spracheingabe</td>
+            <td align="left">Antwort Maxi</td>
+        </tr>
+        <tr>
+            <td align="left">Wo ist die Zelle ... ?</td>
+            <td align="center"></td>
+        </tr>
     </table>
 
     <div id="canvas">

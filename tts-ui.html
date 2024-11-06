@@ -1,0 +1,85 @@
+<table align="left">
+    <tr>
+
+        <td>
+            <p>
+                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started"
+                    target="_blank">Azure
+                    Cognitive Services Speech Documentation</a>
+            </p>
+            <br>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>Your Speech Resource Key</p>
+            <p>
+                <input id="resourceKey" type="text" size="40" placeholder="Your resource key (32 characters)" value=""
+                    onblur="updateSrc()">
+            </p>
+            <br>
+
+    </tr>
+
+    <tr>
+        <td>
+            <p>Your Speech Resource Region</p>
+            <p>
+                <input id="resourceRegion" type="text" size="40" placeholder="Your resource region"
+                    value="germanywestcentral" onblur="updateSrc()">
+            </p>
+            <br>
+        </td>
+    </tr>
+
+
+    <tr>
+
+        <td>
+            <p>
+                Input Text (max 500 char)
+            </p>
+            <p>
+                <textarea id="phraseDiv" style="display: inline-block;width:500px;height:50px" maxlength="500"
+                    onblur="updateSrc()">Wie berechne ich die Einnahmen für Bio-Christstollen?</textarea>
+            </p>
+            <br>
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <p>
+                Stream directly from Azure Cognitive Services
+            </p>
+            <div>
+                <button id="clientAudioAzure" onclick="getSpeechFromAzure()">Get directly from Azure</button>
+            </div>
+        </td>
+    </tr>
+    <!--
+    <tr>
+      <td align="right">
+        Stream audio from file on server</td>
+      <td>
+        <audio id="serverAudioFile" controls preload="none" onerror="DisplayError()">
+        </audio>
+      </td>
+    </tr>
+
+    <tr>
+      <td align="right">Stream audio from buffer on server</td>
+      <td>
+        <audio id="serverAudioStream" controls preload="none" onerror="DisplayError()">
+        </audio>
+      </td>
+    </tr>
+    -->
+</table>
+<script src="js/Tone.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js">
+    </script>
+<script src="skript_maxi.js"></script>
+<script src="canvas.js"></script>

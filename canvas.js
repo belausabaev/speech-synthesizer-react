@@ -10,7 +10,7 @@ const audioBuffer = new Tone.ToneBufferSource(audioFile, () => {
     grainBuffer.buffer = audioBuffer.buffer;
 }).toDestination();
 
-
+//var resourceKey ="d49b04f4c7c349efa12a8bc81c872521";
 
 // status fields and start button in UI
 var phraseDiv;
@@ -25,17 +25,43 @@ var synthesizer;
 
 var phrase = "all good men must come to the aid"
 var queryString = null;
+var skript_text = "";
 
 var audioType = "audio/mpeg";
 var serverSrc = "/text-to-speech";
+
+var number;
 
 //document.getElementById('serverAudioStream').disabled = true;
 //document.getElementById('serverAudioFile').disabled = true;
 document.getElementById('clientAudioAzure').disabled = true;
 
 // update src URL query string for Express.js server
-function updateSrc() {
+function updateSrc2() {
 
+    // input values
+    resourceKey = document.getElementById('resourceKey').value.trim();
+    resourceRegion = resourceRegion;
+
+}
+
+function setInputTxt(number) {
+    console.log(number);
+    console.log(skript[number]);
+    skript_text = skript[number];
+    phrase = skript[number];
+    console.log(phrase);
+    //var clientAudioAzureControl = document.getElementById('clientAudioAzure');
+    //clientAudioAzureControl.disabled = false;
+    //  document.getElementById('phraseDiv').innerHTML = skript_text;
+    //phrase = skript[number];
+}
+
+
+
+// update src URL query string for Express.js server
+function updateSrc() {
+    console.log("in update src");
     // input values
     resourceKey = document.getElementById('resourceKey').value.trim();
     resourceRegion = document.getElementById('resourceRegion').value.trim();
@@ -65,6 +91,8 @@ function updateSrc() {
 
 }
 
+
+
 function DisplayError(error) {
     window.alert(JSON.stringify(error));
 }
@@ -72,6 +100,8 @@ function DisplayError(error) {
 // Client-side request directly to Azure Cognitive Services
 function getSpeechFromAzure() {
 
+
+    console.log(phrase);
     // authorization for Speech service
     var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(resourceKey, resourceRegion);
 
@@ -124,10 +154,12 @@ document.addEventListener("DOMContentLoaded", function () {
     resourceKey = document.getElementById('resourceKey').value;
     resourceRegion = document.getElementById('resourceRegion').value;
     phrase = document.getElementById('phraseDiv').value;
+ //   skript_text = document.getElementById('text').value;
+
     if (!!window.SpeechSDK) {
         SpeechSDK = window.SpeechSDK;
         clientAudioAzure.disabled = false;
 
-   //     document.getElementById('content').style.display = 'block';
+        //     document.getElementById('content').style.display = 'block';
     }
 });
