@@ -32,13 +32,12 @@ var serverSrc = "/text-to-speech";
 
 var number;
 
-let inhalt = true;
-let koord = false;
-let sz = false;
-let info = false;
+var inhalt = true;
+var koord = false;
+var sz = false;
+var info = false;
 
-
-let voice = "de-DE-ElkeNeural";
+var voice = "de-DE-ElkeNeural";
 
 //document.getElementById('serverAudioStream').disabled = true;
 //document.getElementById('serverAudioFile').disabled = true;
@@ -110,15 +109,13 @@ function setMode(n) {
         sz = false;
         info = false;
 
-        //btnInhalt.style.color = "blue";
-        console.log(inhalt + " " + koord + " " + sz + " " + info);
     }
     else if (n == 2) {
         inhalt = false;
         koord = true;
         sz = false;
         info = false;
-        console.log(inhalt + " " + koord + " " + sz + " " + info);
+  
 
     }
     else if (n == 3) {
