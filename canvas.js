@@ -32,9 +32,110 @@ var serverSrc = "/text-to-speech";
 
 var number;
 
+let inhalt = false;
+let koord = false;
+let sz = false;
+let info = false;
+
+
+let voice = "de-DE-ElkeNeural";
+
 //document.getElementById('serverAudioStream').disabled = true;
 //document.getElementById('serverAudioFile').disabled = true;
 document.getElementById('clientAudioAzure').disabled = true;
+
+
+
+
+
+//const btnInhalt = document.getElementById(".inhalt").value;
+
+
+
+
+/*
+const btnKoord = document.querySelector(".koordinaten");
+const btnSZ = document.querySelector(".sz");
+const btnInfo = document.querySelector(".info");
+
+
+btnInhalt.onclick = () => {
+    if (inhalt) {
+        inhalt = false;
+        toggleBtnColorDeact(btnInhalt);
+    }
+    else {
+        inhalt = true;
+        toggleBtnColorActive(btnInhalt);
+    }
+}
+
+
+toggleBtnColorActive = (btnName) => {
+    btnName.style.color = "blue";
+};
+
+toggleBtnColorDeact = (btnName) => {
+    btnName.style.color = "yellow";
+};
+
+// same as toggle sound above
+btnInhalt.addEventListener("click", function () {
+    if (inhalt) {
+        inhalt = false;
+        toggleBtnColorDeact(btnInhalt);
+    }
+    else {
+        inhalt = true;
+        toggleBtnColorActive(btnInhalt);
+    }
+});
+*/
+
+
+function setVoice(v){
+    if(v == 'moritz'){
+        voice = "de-DE-KillianNeural";
+    }
+    else if(v == 'maxi'){
+        voice = "de-DE-ElkeNeural";
+    }
+}
+
+function setMode(n) {
+    if (n == 1) {
+
+        inhalt = true;
+        koord = false;
+        sz = false;
+        info = false;
+
+        //btnInhalt.style.color = "blue";
+        console.log(inhalt + " " + koord + " " + sz + " " + info);
+    }
+    else if (n == 2) {
+        inhalt = false;
+        koord = true;
+        sz = false;
+        info = false;
+        console.log(inhalt + " " + koord + " " + sz + " " + info);
+
+    }
+    else if (n == 3) {
+        inhalt = false;
+        koord = false;
+        sz = true;
+        info = false;
+
+    }
+    else if (n == 4) {
+        inhalt = false;
+        koord = false;
+        sz = false;
+        info = true;
+
+    }
+}
 
 // update src URL query string for Express.js server
 function updateSrc2() {
@@ -104,7 +205,7 @@ function getSpeechFromAzure() {
     console.log(phrase);
     // authorization for Speech service
     var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(resourceKey, resourceRegion);
-    speechConfig.speechSynthesisVoiceName = "de-DE-ElkeNeural"; 
+    speechConfig.speechSynthesisVoiceName = voice;
 
     // new Speech object
     synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
@@ -146,6 +247,111 @@ function getSpeechFromAzure() {
 
 }
 
+
+// Client-side request directly to Azure Cognitive Services
+function getSpeechFromAzure(phrase) {
+
+
+    console.log(phrase);
+    // authorization for Speech service
+    var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(resourceKey, resourceRegion);
+    speechConfig.speechSynthesisVoiceName = voice;
+
+    // new Speech object
+    synthesizer = new SpeechSDK.SpeechSynthesizer(speechConfig);
+
+    synthesizer.speakTextAsync(
+        phrase,
+        function (result) {
+
+            // Success function
+
+            // display status
+            if (result.reason === SpeechSDK.ResultReason.SynthesizingAudioCompleted) {
+
+                // load client-side audio control from Azure response
+                audioElement = document.getElementById("clientAudioAzure");
+                const blob = new Blob([result.audioData], { type: "audio/mpeg" });
+                const url = window.URL.createObjectURL(blob);
+
+            } else if (result.reason === SpeechSDK.ResultReason.Canceled) {
+                // display Error
+                throw (result.errorDetails);
+            }
+
+            // clean up
+            synthesizer.close();
+            synthesizer = undefined;
+        },
+        function (err) {
+
+            // Error function
+            throw (err);
+            audioElement = document.getElementById("audioControl");
+            audioElement.disabled = true;
+
+            // clean up
+            synthesizer.close();
+            synthesizer = undefined;
+        });
+
+}
+
+
+
+// Client-side request directly to Azure Cognitive Services
+function getSpeechFromAzure_modus(x, y) {
+
+    if (x != undefined && y != undefined) {
+
+
+        if (inhalt) {
+            console.log("x: " + x + " y: " + y + " " + tabelle_excel[x][y]);
+            getSpeechFromAzure(tabelle_excel[x][y]);
+        }
+        else if (koord) {
+            if (x == 0) {
+                getSpeechFromAzure("Tabellenzeile " + y);
+            }
+            else if (y == 0) {
+                getSpeechFromAzure("Tabellenspalte " + tabelle_excel[x][0]);
+            }
+            else {
+                getSpeechFromAzure(tabelle_excel[x][y] + " Tabellenzelle " + tabelle_excel[x][0] + " " + tabelle_excel[0][y]);
+            }
+        }
+        else if(info){
+            if (x == 0) {
+                getSpeechFromAzure("Tabellenzeile " + y);
+            }
+            else if (y == 0) {
+                getSpeechFromAzure("Tabellenspalte " + tabelle_excel[x][0]);
+            }
+            else {
+            getSpeechFromAzure("Tabellenzelle " + tabelle_excel[x][0] + " " + tabelle_excel[0][y]);
+            }
+        }
+
+        else if(sz){
+            if(x == 2 && y!=1){
+                getSpeechFromAzure(tabelle_excel[x][1] + " " + tabelle_excel[x][y]);
+            }
+            else if(y == 1){
+                getSpeechFromAzure("Überschrift Spalte " + tabelle_excel[x][1]);
+            }
+            else {
+            getSpeechFromAzure(tabelle_excel[2][y] +" "+ tabelle_excel[x][1] + " " + tabelle_excel[x][y]);
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
 // Initialization
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -155,12 +361,16 @@ document.addEventListener("DOMContentLoaded", function () {
     resourceKey = document.getElementById('resourceKey').value;
     resourceRegion = document.getElementById('resourceRegion').value;
     phrase = document.getElementById('phraseDiv').value;
- //   skript_text = document.getElementById('text').value;
+    //   skript_text = document.getElementById('text').value;
+
+
 
     if (!!window.SpeechSDK) {
         SpeechSDK = window.SpeechSDK;
         clientAudioAzure.disabled = false;
 
-             document.getElementById('content').style.display = 'block';
+        document.getElementById('content').style.display = 'block';
     }
 });
+
+

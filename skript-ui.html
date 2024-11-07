@@ -23,6 +23,8 @@
         background-color: #ddd;
     }
 
+
+
     #maxi th {
         padding-top: 12px;
         padding-bottom: 12px;
@@ -30,66 +32,835 @@
         background-color: #04AA6D;
         color: white;
     }
+
+    #maxi td:hover,
+    th:hover {
+        background-color: aqua;
+    }
 </style>
 <p>Your Speech Resource Key</p>
-        <p>
-            <input id="resourceKey" type="text" size="40" placeholder="Your resource key (32 characters)" value=""
-                onblur="updateSrc2()">
-        </p>
-        <br>
+<p>
+    <input id="resourceKey" type="text" size="40" placeholder="Your resource key (32 characters)" value=""
+        onblur="updateSrc2()">
+</p>
+<br>
 
-<table id="maxi" align="left" style="overflow-y:scroll">
+<p>
+    <button id="moritz" onclick="setVoice('moritz')">Stimme Moritz</button>
+    <button id="maxi" onclick="setVoice('maxi')">Stimme Maxi</button>
+</p>
+
+
+<p>
+    <button id="inhalt" onclick="setMode(1)">Zelleninhalt</button>
+    <button id="koordinaten" onclick="setMode(2)">Zellenkoordinaten</button>
+    <button id="info" onclick="setMode(4)">Info</button>
+    <button id="sz" onclick="setMode(3)">Spalte und Zeile Vorlesen</button>
+</p>
+
+
+<table id="maxi" style="overflow-y:scroll">
+
+    <tr id="heading">
+        <th>
+            <div></div>
+        <th onclick="getSpeechFromAzure_modus(1,0)" id="A">
+            <div>A</div>
+        <th onclick="getSpeechFromAzure_modus(2,0)">
+            <div>B</div>
+        <th onclick="getSpeechFromAzure_modus(3,0)">
+            <div>C</div>
+        </th>
+        <th onclick="getSpeechFromAzure_modus(4,0)">
+            <div>D</div>
+        </th>
+        <th onclick="getSpeechFromAzure_modus(5,0)">
+            <div>E</div>
+        </th>
+    <tr id="heading">
+        <th onclick="getSpeechFromAzure_modus(0,1)">
+            <div>1</div>
+        <td onclick="getSpeechFromAzure_modus(1,1)">Position</td>
+        <td onclick="getSpeechFromAzure_modus(2,1)">Gebäcksorte</td>
+        <td onclick="getSpeechFromAzure_modus(3,1)">Menge</td>
+        <td onclick="getSpeechFromAzure_modus(4,1)">Einzelpreis</td>
+        <td onclick="getSpeechFromAzure_modus(5,1)">Sorte Gesamt</td>
+        <!--
+        <th>
+            <div>Position</div>
+        <th>
+            <div>Gebäcksorte</div>
+        <th>
+            <div>Menge</div>
+        </th>
+        <th>
+            <div>Einzelpreis</div>
+        </th>
+        <th>
+            <div>Sorte Gesamt</div>
+        </th>
+        -->
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,2)">
+            <div>2</div>
+        </th>
+        <td onclick="getSpeechFromAzure_modus(1,2)">1</td>
+        <td onclick="getSpeechFromAzure_modus(2,2)">Zwetschgenmännle</td>
+        <td onclick="getSpeechFromAzure_modus(3,2)">120</td>
+        <td onclick="getSpeechFromAzure_modus(4,2)">5.00 Euro</td>
+        <td onclick="getSpeechFromAzure_modus(5,2)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,3)">
+            <div>3</div>
+        </th>
+        <td onclick="getSpeechFromAzure_modus(1,3)">2</td>
+        <td onclick="getSpeechFromAzure_modus(2,3)">Reiterle</td>
+        <td onclick="getSpeechFromAzure_modus(3,3)">98</td>
+        <td onclick="getSpeechFromAzure_modus(4,3)">3.00 Euro</td>
+        <td onclick="getSpeechFromAzure_modus(5,3)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,4)">
+            <div>4</div>
+        </th>
+        <td onclick="getSpeechFromAzure_modus(1,4)">3</td>
+        <td onclick="getSpeechFromAzure_modus(2,4)">Elise Pflaume-Zimt</td>
+        <td onclick="getSpeechFromAzure_modus(3,4)">130</td>
+        <td onclick="getSpeechFromAzure_modus(4,4)">9.50 Euro</td>
+        <td onclick="getSpeechFromAzure_modus(5,4)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,5)">
+            <div>5</div>
+        </th>
+        <td onclick="getSpeechFromAzure_modus(1,5)">4</td>
+        <td onclick="getSpeechFromAzure_modus(2,5)">Südliche Elise</td>
+        <td onclick="getSpeechFromAzure_modus(3,5)">100</td>
+        <td onclick="getSpeechFromAzure_modus(4,5)">9.50 Euro</td>
+        <td onclick="getSpeechFromAzure_modus(5,5)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,6)">
+            <div>6</div>
+        </th>
+        <td onclick="getSpeechFromAzure_modus(1,6)">5</td>
+        <td onclick="getSpeechFromAzure_modus(2,6)">Caschew Schoko-Traum</td>
+        <td onclick="getSpeechFromAzure_modus(3,6)">103</td>
+        <td onclick="getSpeechFromAzure_modus(4,6)">9.50 Euro</td>
+        <td onclick="getSpeechFromAzure_modus(5,6)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,7)">
+            <div>7</div>
+        </th>
+        <td onclick="getSpeechFromAzure_modus(1,7)">6</td>
+        <td onclick="getSpeechFromAzure_modus(2,7)">Bio-Christstollen</td>
+        <td onclick="getSpeechFromAzure_modus(3,7)">55</td>
+        <td onclick="getSpeechFromAzure_modus(4,7)">10 Euro</td>
+        <td onclick="getSpeechFromAzure_modus(5,7)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,8)">
+            <div>8</div>
+        </th>
+        <td colspan="3" onclick="getSpeechFromAzure_modus('undefined')"></td>
+        <td onclick="getSpeechFromAzure_modus(4,8)">Zwischensumme</td>
+        <td onclick="getSpeechFromAzure_modus(5,8)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,9)">
+            <div>9</div>
+        </th>
+        <td colspan="3" onclick="getSpeechFromAzure_modus('undefined')"></td>
+        <td onclick="getSpeechFromAzure_modus(4,9)">Steuersatz</td>
+        <td onclick="getSpeechFromAzure_modus(5,9)">19%</td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,10)">
+            <div>10</div>
+        </th>
+        <td colspan="3" onclick="getSpeechFromAzure_modus('undefined')"></td>
+        <td onclick="getSpeechFromAzure_modus(4,10)">Mehrwertsteuer</td>
+        <td onclick="getSpeechFromAzure_modus(5,10)"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure_modus(0,11)">
+            <div>11</div>
+        </th>
+        <td colspan="3" onclick="getSpeechFromAzure_modus('undefined')"></td>
+        <td onclick="getSpeechFromAzure_modus(4,11)">Gesamt</td>
+        <td onclick="getSpeechFromAzure_modus(5,11)"></td>
+    </tr>
+</table>
+
+
+<!--
+<table id="maxi" style="overflow-y:scroll">
+
+    <tr id="heading">
+        <th>
+            <div></div>
+        <th onclick="getSpeechFromAzure('Aah')">
+            <div>A</div>
+        <th onclick="getSpeechFromAzure('B')">
+            <div>B</div>
+        <th onclick="getSpeechFromAzure('C')">
+            <div>C</div>
+        </th>
+        <th onclick="getSpeechFromAzure('D')">
+            <div>D</div>
+        </th>
+        <th onclick="getSpeechFromAzure('E')">
+            <div>E</div>
+        </th>
+    <tr id="heading">
+        <th onclick="getSpeechFromAzure('1')">
+            <div>1</div>
+        <td onclick="getSpeechFromAzure('Position')">Position</td>
+        <td onclick="getSpeechFromAzure('Gebäcksorte')">Gebäcksorte</td>
+        <td onclick="getSpeechFromAzure('Menge')">Menge</td>
+        <td onclick="getSpeechFromAzure('Einzelpreis')">Einzelpreis</td>
+        <td onclick="getSpeechFromAzure('Sorte Gesamt')">Sorte Gesamt</td>
+
+    <tr>
+        <th onclick="getSpeechFromAzure('2')">
+            <div>2</div>
+        </th>
+        <td onclick="getSpeechFromAzure('1')">1</td>
+        <td onclick="getSpeechFromAzure('Zwetschgenmännle')">Zwetschgenmännle</td>
+        <td onclick="getSpeechFromAzure('120')">120</td>
+        <td onclick="getSpeechFromAzure('5 Euro')">5.00 Euro</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('3')">
+            <div>3</div>
+        </th>
+        <td onclick="getSpeechFromAzure('2')">2</td>
+        <td onclick="getSpeechFromAzure('Reiterle')">Reiterle</td>
+        <td onclick="getSpeechFromAzure('98')">98</td>
+        <td onclick="getSpeechFromAzure('3 Euro')">3.00 Euro</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('4')">
+            <div>4</div>
+        </th>
+        <td onclick="getSpeechFromAzure('3')">3</td>
+        <td onclick="getSpeechFromAzure('Elise Pflaume-Zimt')">Elise Pflaume-Zimt</td>
+        <td onclick="getSpeechFromAzure('130')">130</td>
+        <td onclick="getSpeechFromAzure('9 Euro 50')">9.50 Euro</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('5')">
+            <div>5</div>
+        </th>
+        <td onclick="getSpeechFromAzure('4')">4</td>
+        <td onclick="getSpeechFromAzure('Südliche Elise')">Südliche Elise</td>
+        <td onclick="getSpeechFromAzure('100')">100</td>
+        <td onclick="getSpeechFromAzure('9 Euro 50')">9.50 Euro</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('6')">
+            <div>6</div>
+        </th>
+        <td onclick="getSpeechFromAzure('5')">5</td>
+        <td onclick="getSpeechFromAzure('Caschew Schoko Traum')">Caschew Schoko-Traum</td>
+        <td onclick="getSpeechFromAzure('103')">103</td>
+        <td onclick="getSpeechFromAzure('9 Euro 50')">9.50 Euro</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('7')">
+            <div>7</div>
+        </th>
+        <td onclick="getSpeechFromAzure('6')">6</td>
+        <td onclick="getSpeechFromAzure('Bio-Christstollen')">Bio-Christstollen</td>
+        <td onclick="getSpeechFromAzure('55')">55</td>
+        <td onclick="getSpeechFromAzure('10 Euro')">10 Euro</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('8')">
+            <div>8</div>
+        </th>
+        <td colspan="3"></td>
+        <td onclick="getSpeechFromAzure('Zwischensumme')">Zwischensumme</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('9')">
+            <div>9</div>
+        </th>
+        <td colspan="3"></td>
+        <td onclick="getSpeechFromAzure('Steuersatz')">Steuersatz</td>
+        <td onclick="getSpeechFromAzure('19%')">19%</td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('10')">
+            <div>10</div>
+        </th>
+        <td colspan="3"></td>
+        <td onclick="getSpeechFromAzure('Mehrwertsteuer')">Mehrwertsteuer</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+    <tr>
+        <th onclick="getSpeechFromAzure('11')">
+            <div>11</div>
+        </th>
+        <td colspan="3"></td>
+        <td onclick="getSpeechFromAzure('Gesamtsumme')">Gesamt</td>
+        <td onclick="getSpeechFromAzure('leer')"></td>
+    </tr>
+</table>
+
+-->
+
+<p>
+
+</p>
+<br>
+<table id="maxi" style="overflow-y:scroll">
+<!--
+    <tr id="heading">
+        <th>
+            <div>0</div>
+        <th>
+            <div>A</div>
+        <th>
+            <div>B</div>
+        <th>
+            <div>C</div>
+        </th>
+        <th>
+            <div>D</div>
+        </th>
+        <th>
+            <div>E</div>
+        </th>
+    <tr id="heading">
+        <th>
+            <div>1</div>
+        <th>
+            <div>Position</div>
+        <th>
+            <div>Gebäcksorte</div>
+        <th>
+            <div>Menge</div>
+        </th>
+        <th>
+            <div>Einzelpreis</div>
+        </th>
+        <th>
+            <div>Sorte Gesamt</div>
+        </th>
+    <tr>
+        <th>
+            <div>2</div>
+        </th>
+        <td>1</td>
+        <td>Zwetschgenmännle</td>
+        <td>120</td>
+        <td>5.00 Euro</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>3</div>
+        </th>
+        <td>2</td>
+        <td>Reiterle</td>
+        <td>98</td>
+        <td>3.00 Euro</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>4</div>
+        </th>
+        <td>3</td>
+        <td>Elise Pflaume-Zimt</td>
+        <td>130</td>
+        <td>9.50 Euro</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>5</div>
+        </th>
+        <td>4</td>
+        <td>Südliche Elise</td>
+        <td>100</td>
+        <td>9.50 Euro</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>6</div>
+        </th>
+        <td>5</td>
+        <td>Caschew Schoko-Traum</td>
+        <td>103</td>
+        <td>9.50 Euro</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>7</div>
+        </th>
+        <td>6</td>
+        <td>Bio-Christstollen</td>
+        <td>55</td>
+        <td>10 Euro</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>8</div>
+        </th>
+        <td colspan="3"></td>
+        <th>Zwischensumme</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>9</div>
+        </th>
+        <td colspan="3"></td>
+        <th>Steuersatz</th>
+        <td>19%</td>
+    </tr>
+    <tr>
+        <th>
+            <div>10</div>
+        </th>
+        <td colspan="3"></td>
+        <th>Mehrwertsteuer</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>
+            <div>11</div>
+        </th>
+        <td colspan="3"></td>
+        <th>Gesamt</th>
+        <td></td>
+    </tr>
+
+    <p>
+
+    </p>
+    <br>
+-->
     <tr id="heading">
         <th>
             <div>Num</div>
-        <th>
+        <th colspan="3">
             <div>Spracheingabe</div>
         <th>
             <div>Antwort Maxi</div>
-    <tr>
-        <td align="left">1</td>
-        <td align="left">wo ist Zwetschgenmännle?</td>
-        <td id="text" onclick="setInputTxt(1),getSpeechFromAzure()" align="left">Tabellenzelle B2</td>
+
+
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[2])">
+        <td></td>
+        <td>wo ist</td>
+        <td colspan="2">Zwetschgenmännle?</td>
+        <td>Tabellenzelle B2</td>
     </tr>
-    <tr>
-        <td align="left">2</td>
-        <td align="left">wo ist Reiterle?</td>
-        <td id="text" onclick="setInputTxt(2),getSpeechFromAzure()" align="left">Tabellenzelle B3</td>
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[3])">
+        <td></td>
+        <td></td>
+        <td colspan="2">Reiterle?</td>
+        <td>Tabellenzelle B3</td>
     </tr>
-    <tr>
-        <td align="left">3</td>
-        <td align="left">wo ist Elise Pflaume-Zimt?</td>
-        <td id="text" onclick="setInputTxt(3),getSpeechFromAzure()" align="left">Tabellenzelle B4</td>
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[4])">
+        <td></td>
+        <td></td>
+        <td colspan="2">Elise Pflaume-Zimt?</td>
+        <td>Tabellenzelle B4</td>
     </tr>
-    <tr>
-        <td align="left">4</td>
-        <td align="left">wo ist Südliche Elise?</td>
-        <td id="text" onclick="setInputTxt(4), getSpeechFromAzure()" align="left">Tabellenzelle B5</td>
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[5])">
+        <td></td>
+        <td></td>
+        <td colspan="2">Südliche Elise?</td>
+        <td>Tabellenzelle B5</td>
     </tr>
-    <tr>
-        <td align="left">5</td>
-        <td align="left">wo ist Caschew Schoko-Traum?</td>
-        <td id="text" onclick="setInputTxt(5),getSpeechFromAzure()" align="left">Tabellenzelle B6</td>
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[6])">
+        <td></td>
+        <td></td>
+        <td colspan="2">Caschew Schoko-Traum?</td>
+        <td>Tabellenzelle B6</td>
     </tr>
-    <tr>
-        <td align="left">6</td>
-        <td align="left">wo ist Caschew Bio-Christstollen?</td>
-        <td id="text" onclick="setInputTxt(6),getSpeechFromAzure()" align="left">Tabellenzelle B7</td>
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[7])">
+        <td></td>
+        <td></td>
+        <td colspan="2">Bio-Christstollen?</td>
+        <td>Tabellenzelle B7</td>
     </tr>
-    <tr>
-        <td>7</td>
-        <td align="left">Wo ist die Zelle für die Einnahmen für Zwetschgenmännle?</td>
-        <td id="text" onclick="setInputTxt(7),getSpeechFromAzure()" align="left">Tabellenzelle E2</td>
+
+    <tr onclick="getSpeechFromAzure('C2')">
+        <td></td>
+        <td>wo ist die Menge von/für</td>
+        <td colspan="2">Zwetschgenmännle?</td>
+        <td>Tabellenzelle C2</td>
     </tr>
-    <tr>
-        <td>8</td>
-        <td align="left">Wieviel betragen die Einnahmen für Bio-Christstollen?</td>
-        <td id="text" onclick="setInputTxt(8),getSpeechFromAzure()" id="8" align="left">Wie berechne ich die Einnahmen für Bio-Christstollen?</td>
+    <tr onclick="getSpeechFromAzure('C3')">
+        <td></td>
+        <td></td>
+        <td colspan="2">Reiterle?</td>
+        <td>Tabellenzelle C3</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('C4')">
+        <td></td>
+        <td></td>
+        <td colspan="2">Elise Pflaume-Zimt?</td>
+        <td>Tabellenzelle C4</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('C5')">
+        <td></td>
+        <td></td>
+        <td colspan="2">Südliche Elise?</td>
+        <td>Tabellenzelle C5</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('C6')">
+        <td></td>
+        <td></td>
+        <td colspan="2">Caschew Schoko-Traum?</td>
+        <td>Tabellenzelle C6</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('C7')">
+        <td></td>
+        <td></td>
+        <td colspan="2">Bio-Christstollen?</td>
+        <td>Tabellenzelle C7</td>
     </tr>
 
 
 
-     
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td>wo ist der Preis von/für</td>
+        <td colspan="2">Zwetschgenmännle?</td>
+        <td>Tabellenzelle D2</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Reiterle?</td>
+        <td>Tabellenzelle D3</td>
+    </tr>
+    <tr onclick=getSpeechFromAzure()>
+        <td></td>
+        <td></td>
+        <td colspan="2">Elise Pflaume-Zimt?</td>
+        <td>Tabellenzelle D4</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Südliche Elise?</td>
+        <td>Tabellenzelle D5</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Caschew Schoko-Traum?</td>
+        <td>Tabellenzelle D6</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Bio-Christstollen?</td>
+        <td>Tabellenzelle D7</td>
+    </tr>
+
+
+
+
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td>was ist die Menge von</td>
+        <td colspan="2">Zwetschgenmännle?</td>
+        <td>120</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Reiterle?</td>
+        <td>98</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Elise Pflaume-Zimt?</td>
+        <td>130</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Südliche Elise?</td>
+        <td>100</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Caschew Schoko-Traum?</td>
+        <td>103</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td colspan="2">Bio-Christstollen?</td>
+        <td>55</td>
+    </tr>
+
+
+
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td>was ist der Preis von/wieviel kostet(n)</td>
+        <td>Zwetschgenmännle?</td>
+        <td></td>
+        <td>5 Euro</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td>Reiterle?</td>
+        <td></td>
+        <td>3 Euro</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td>Elise Pflaume-Zimt?</td>
+        <td></td>
+        <td>9.50 Euro</td>
+    </tr>
+    <tr onclick="setInputTxt(4),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td>Südliche Elise?</td>
+        <td></td>
+        <td>9.50 Euro</td>
+    </tr>
+    <tr onclick="setInputTxt(5),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td>Caschew Schoko-Traum?</td>
+        <td></td>
+        <td>9.50 Euro</td>
+    </tr>
+    <tr onclick="setInputTxt(6),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td>Bio-Christstollen?</td>
+        <td></td>
+        <td>10 Euro</td>
+    </tr>
+
+
+
+
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td>Wo ist die Zelle für/ Wo berechne ich</td>
+        <td>die Einnahmen für</td>
+        <td>Zwetschgenmännle?</td>
+        <td>Tabellenzelle E2</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Reiterle?</td>
+        <td>Tabellenzelle E3</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Elise Pflaume-Zimt?</td>
+        <td>Tabellenzelle E4</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Südliche Elise?</td>
+        <td>Tabellenzelle E5</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Caschew Schoko-Traum?</td>
+        <td>Tabellenzelle E6</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Bio-Christstollen?</td>
+        <td>Tabellenzelle E7</td>
+    </tr>
+
+
+
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td>Wo ist die Zelle für/ Wo berechne ich</td>
+        <td></td>
+        <td>die Zwischensumme?</td>
+        <td>Tabellenzelle E2</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>die Mehrwertsteuer?</td>
+        <td>Tabellenzelle E3</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>die Gesamtsumme?</td>
+        <td>Tabellenzelle E4</td>
+    </tr>
+    <tr onclick="setInputTxt(7),getSpeechFromAzure()">
+        <td></td>
+        <td colspan="3">Was ist der Steuersatz?</td>
+        <td>19%</td>
+    </tr>
+
+
+
+    <tr onclick="getSpeechFromAzure(tz+x[0]+y[0])">
+        <td></td>
+        <td>Wo ist</td>
+        <td>die Überschrift/Spalte</td>
+        <td>Position?</td>
+        <td>A1</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[1]+y[0])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Gebäcksorte?</td>
+        <td>B1</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[2]+y[0])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Menge</td>
+        <td>C1</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[3]+y[0])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Einzelpreis</td>
+        <td>D1</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[4]+y[0])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Sorte gesamt/ Einnahmen für die einzelnen Gebäcksorten</td>
+        <td>E1</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[3]+y[7])">
+        <td></td>
+        <td></td>
+        <td>die Überschrift/Zeile</td>
+        <td>Zwischensumme</td>
+        <td>D8</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[3]+y[8])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Steuersatz?</td>
+        <td>D9</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[3]+y[9])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Mehrwertsteuer?</td>
+        <td>D10</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure(tz+x[3]+y[10])">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Gesamt(summe)?</td>
+        <td>D11</td>
+    </tr>
+
+
+
+    <tr onclick="getSpeechFromAzure('Wie berechne ich die Einnahmen für Zwetschgenmännle?')">
+        <td></td>
+        <td>Wieviel</td>
+        <td>betragen die Einnahmen für</td>
+        <td>Zwetschgenmännle?</td>
+        <td>Wie berechne ich die Einnahmen für Zwetschgenmännle?</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('Wie berechne ich die Einnahmen für Reiterle?')">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Reiterle?</td>
+        <td>Wie berechne ich die Einnahmen für Reiterle?</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('Wie berechne ich die Einnahmen für Elise Pflaume-Zimt?')">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Elise Pflaume-Zimt?</td>
+        <td>Wie berechne ich die Einnahmen für Elise Pflaume-Zimt?</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('Wie berechne ich die Einnahmen für Südliche Elise?')">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Südliche Elise</td>
+        <td>Wie berechne ich die Einnahmen für Südliche Elise?</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('Wie berechne ich die Einnahmen für Caschew Schoko-Traum?')">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Caschew Schoko-Traum?</td>
+        <td>Wie berechne ich die Einnahmen für Caschew Schoko-Traum?</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('Wie berechne ich die Einnahmen für Bio-Christstollen?')">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Bio-Christstollen?</td>
+        <td>Wie berechne ich die Einnahmen für Bio-Christstollen?</td>
+    </tr>
+    <tr  onclick="getSpeechFromAzure('Position gibt die Nummer der Gebäcksorte an, mit Position werden in Rechnungen einzelne Waren oder Dienstleistungen gekennzeichnet')">
+        <td></td>
+        <td colspan="3">Was bedeutet Position?</td>
+        <td>Position gibt die Nummer der Gebäcksorte an, mit Position werden in Rechnungen einzelne Waren oder Dienstleistungen gekennzeichnet</td>
+    </tr>
+    <tr onclick="getSpeechFromAzure('Es gibt 6 Gebäcksorten, Zwetschgenmännle, Reiterle, Elise Pflaume-Zimt, Südliche Elise, Caschew Schoko-Traum und Bio-Christstollen')">
+        <td></td>
+        <td colspan="3">Welche Gebäcksorten gibt es?</td>
+        <td>Es gibt 6 Gebäcksorten, Zwetschgenmännle, Reiterle, Elise Pflaume-Zimt, Südliche Elise, Caschew Schoko-Traum und Bio-Christstollen</td>
+    </tr>
+
+
+
+
 
 </table>
 
@@ -98,6 +869,6 @@
 <script
     src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js">
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="skript_maxi.js"></script>
 <script src="canvas.js"></script>
