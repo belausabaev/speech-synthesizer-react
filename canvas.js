@@ -32,7 +32,7 @@ var serverSrc = "/text-to-speech";
 
 var number;
 
-let inhalt = false;
+let inhalt = true;
 let koord = false;
 let sz = false;
 let info = false;
